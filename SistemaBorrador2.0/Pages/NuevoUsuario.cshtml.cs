@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using SistemaBorrador2._0.Repositorios;
 
 namespace SistemaBorrador2._0.Pages
 {
@@ -55,10 +56,25 @@ namespace SistemaBorrador2._0.Pages
         {
             if (ModelState.IsValid)
             {
-                var password = this.Password;
-                var repassword = this.RePassword;
+                //Comprobar si las contraseñas son iguales
+                if (this.Password != this.RePassword)
+                {
+                    ModelState.AddModelError(string.Empty, "Las contraseñas no son iguales");
+                    return Page();
+                }
+                var repo = new UsuarioRepositorio();
+                if (repo.nombreUsuarioExiste(this.NombreUsuario))
+                {
+                    ModelState.AddModelError(string.Empty, "El nombre de usuario ya existe en la base de datos");
+                    return Page();
+                }
 
-                return Page();
+
+                //Guardar el usuario en la bd
+
+                repo.InsertUsuario(this.NombreUsuario, this.Nombres, this.Apellidos, (int)this.RolId, this.Password);
+
+                return RedirectToPage("./Usuarios");
             }
 
             return Page();

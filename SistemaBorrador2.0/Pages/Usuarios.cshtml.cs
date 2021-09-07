@@ -5,11 +5,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using SistemaBorrador2._0.Models;
+using SistemaBorrador2._0.Repositorios;
 
 namespace SistemaBorrador2._0.Pages
 {
     public class UsuariosModel : PageModel
     {
+        public List<UsuarioListaModel> ListaUsuario { get; set; }
         public IActionResult OnGet()
         {
             var idSession = HttpContext.Session.GetString("idSession");
@@ -18,6 +21,9 @@ namespace SistemaBorrador2._0.Pages
             {
                 return RedirectToPage("./Index");
             }
+
+            var repo = new UsuarioRepositorio();
+            this.ListaUsuario = repo.obtenerUsuarios();
 
             return Page();
         }

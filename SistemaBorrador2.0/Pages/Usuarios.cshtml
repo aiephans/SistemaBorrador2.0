@@ -41,90 +41,31 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach (var usuario in Model.ListaUsuario)
+	                {
                     <tr>
                         <td>
-                            1
+                            @usuario.Id
                         </td>
                         <td>
-                            Usuario 1
+                            @usuario.nombreUsuario
                         </td>
                         <td>
-                            Nombres 1
+                            @usuario.nombres
                         </td>
                         <td>
-                            Apellidos 1
+                            @usuario.apellidos
                         </td>
                         <td>
-                            Rol 1
+                            @usuario.RolId
                         </td>
                         <td>
-                            <button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
+                            <a asp-page="EditarUsuario" asp-route-id="@usuario.Id" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
                             <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
                         </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            2
-                        </td>
-                        <td>
-                            Usuario 2
-                        </td>
-                        <td>
-                            Nombres 2
-                        </td>
-                        <td>
-                            Apellidos 2
-                        </td>
-                        <td>
-                            Rol 2
-                        </td>
-                        <td>
-                            <button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
-                            <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            3
-                        </td>
-                        <td>
-                            Usuario 3
-                        </td>
-                        <td>
-                            Nombres 3
-                        </td>
-                        <td>
-                            Apellidos 3
-                        </td>
-                        <td>
-                            Rol 3
-                        </td>
-                        <td>
-                            <button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
-                            <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            4
-                        </td>
-                        <td>
-                            Usuario 4
-                        </td>
-                        <td>
-                            Nombres 4
-                        </td>
-                        <td>
-                            Apellidos 4
-                        </td>
-                        <td>
-                            Rol 4
-                        </td>
-                        <td>
-                            <button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
-                            <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                        </td>
-                    </tr>
+                    </tr> 
+	                }
+                    
                 </tbody>
             </table>
         </div>
