@@ -98,5 +98,19 @@ namespace SistemaBorrador2._0.Repositorios
             }
             return respuesta;
         }
+        public void ActualizarUsuario(int id, string nombres, string apellidos, int rolId)
+        {
+            string connectionString = "server=localhost;database=SistemaBorrador2Db;Integrated Security=true;";
+            using SqlConnection sql = new SqlConnection(connectionString);
+            using SqlCommand cmd = new SqlCommand("sp_actualizar_usuario", sql);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@id", id));
+            cmd.Parameters.Add(new SqlParameter("@nombres", nombres));
+            cmd.Parameters.Add(new SqlParameter("@apellidos", apellidos));
+            cmd.Parameters.Add(new SqlParameter("@rolId", rolId));
+            sql.Open();
+            cmd.ExecuteNonQuery();
+        }
+
     }
 }

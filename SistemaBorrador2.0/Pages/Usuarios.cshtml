@@ -60,14 +60,16 @@
                             @usuario.RolId
                         </td>
                         <td>
-                            <a asp-page="EditarUsuario" asp-route-id="@usuario.Id" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
-                            <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                            <a asp-page="EditarUsuario" asp-route-id="@usuario.Id" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Editar usuario"><i class="bi bi-pencil-square"></i></a>
+                            <button class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Eliminar usuario"><i class="bi bi-trash"></i></button>
+                            <a asp-page="EditarUsuario" asp-route-id="@usuario.Id" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Cambiar contraseña"><i class="bi bi-key"></i></a>
                         </td>
                     </tr> 
 	                }
                     
                 </tbody>
             </table>
+            <a asp-page="Home" class="btn btn-secondary">Volver</a>
         </div>
     </div>
 </div>
