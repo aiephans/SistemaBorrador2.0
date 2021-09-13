@@ -112,5 +112,28 @@ namespace SistemaBorrador2._0.Repositorios
             cmd.ExecuteNonQuery();
         }
 
+        public void ActualizarPassword(int id, string password)
+        {
+            string connectionString = "server=localhost;database=SistemaBorrador2Db;Integrated Security=true;";
+            using SqlConnection sql = new SqlConnection(connectionString);
+            using SqlCommand cmd = new SqlCommand("sp_cambio_password", sql);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@id", id));
+            cmd.Parameters.Add(new SqlParameter("@password", password));
+            sql.Open();
+            cmd.ExecuteNonQuery();
+        }
+
+        public void EliminarUsuario(int id)
+        {
+            string connectionString = "server=localhost;database=SistemaBorrador2Db;Integrated Security=true;";
+            using SqlConnection sql = new SqlConnection(connectionString);
+            using SqlCommand cmd = new SqlCommand("sp_eliminar_usuario", sql);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@id", id));
+            sql.Open();
+            cmd.ExecuteNonQuery();
+        }
+
     }
 }
