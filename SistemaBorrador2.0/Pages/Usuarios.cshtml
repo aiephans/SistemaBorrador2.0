@@ -36,6 +36,9 @@
                             Rol
                         </th>
                         <th>
+                            Pais
+                        </th>
+                        <th>
 
                         </th>
                     </tr>
@@ -57,11 +60,14 @@
                             @usuario.apellidos
                         </td>
                         <td>
-                            @usuario.RolId
+                            @usuario.Rol
+                        </td>
+                        <td>
+                            @usuario.Pais
                         </td>
                         <td>
                             <a asp-page="EditarUsuario" asp-route-id="@usuario.Id" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Editar usuario"><i class="bi bi-pencil-square"></i></a>
-                            <a asp-page="EliminarUsuario" asp-route-id="@usuario.Id"  class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Eliminar usuario"><i class="bi bi-trash"></i></a>
+                            <a asp-page="EliminarUsuario" asp-route-id="@usuario.Id" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Eliminar usuario"><i class="bi bi-trash"></i></a>
                             <a asp-page="CambioPassword" asp-route-id="@usuario.Id" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Cambiar contraseña"><i class="bi bi-key"></i></a>
                         </td>
                     </tr> 

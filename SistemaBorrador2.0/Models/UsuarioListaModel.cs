@@ -12,5 +12,8 @@ namespace SistemaBorrador2._0.Models
         public string nombres { get; set; }
         public string apellidos { get; set; }
         public int RolId { get; set; }
+        public int PaisId { get; set; }
+        public string Rol { get; set; }
+        public string Pais { get; set; }
     }
 }

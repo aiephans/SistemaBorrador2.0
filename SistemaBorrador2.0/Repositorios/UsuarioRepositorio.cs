@@ -9,7 +9,7 @@ namespace SistemaBorrador2._0.Repositorios
 {
     public class UsuarioRepositorio
     {
-        public void InsertUsuario(string nombreUsuario, string nombres, string apellidos, int rolId, string password)
+        public void InsertUsuario(string nombreUsuario, string nombres, string apellidos, int rolId, int paisId, string password)
         {
             string connectionString = "server=localhost;database=SistemaBorrador2Db;Integrated Security=true;";
             using SqlConnection sql = new SqlConnection(connectionString);
@@ -19,6 +19,7 @@ namespace SistemaBorrador2._0.Repositorios
             cmd.Parameters.Add(new SqlParameter("@nombres", nombres));
             cmd.Parameters.Add(new SqlParameter("@apellidos", apellidos));
             cmd.Parameters.Add(new SqlParameter("@rolId", rolId));
+            cmd.Parameters.Add(new SqlParameter("@paisId", paisId));
             cmd.Parameters.Add(new SqlParameter("@password", password));
             sql.Open();
             cmd.ExecuteNonQuery();
@@ -43,7 +44,10 @@ namespace SistemaBorrador2._0.Repositorios
                         nombreUsuario = reader["nombreUsuario"].ToString(),
                         nombres = reader["nombres"].ToString(),
                         apellidos = reader["apellidos"].ToString(),
-                        RolId = (int)reader["rolId"]
+                        RolId = (int)reader["rolId"],
+                        PaisId = (int)reader["paisId"],
+                        Rol = reader["rol"].ToString(),
+                        Pais = reader["pais"].ToString()
                     };
 
                     listaUsuarios.Add(nuevoUsuario);
@@ -72,7 +76,8 @@ namespace SistemaBorrador2._0.Repositorios
                         nombreUsuario = reader["nombreUsuario"].ToString(),
                         nombres = reader["nombres"].ToString(),
                         apellidos = reader["apellidos"].ToString(),
-                        RolId = (int)reader["rolId"]
+                        RolId = (int)reader["rolId"],
+                        PaisId = (int)reader["paisId"]
                     };
 
                     usuario = nuevoUsuario;
@@ -98,7 +103,7 @@ namespace SistemaBorrador2._0.Repositorios
             }
             return respuesta;
         }
-        public void ActualizarUsuario(int id, string nombres, string apellidos, int rolId)
+        public void ActualizarUsuario(int id, string nombres, string apellidos, int rolId, int paisId)
         {
             string connectionString = "server=localhost;database=SistemaBorrador2Db;Integrated Security=true;";
             using SqlConnection sql = new SqlConnection(connectionString);
@@ -108,6 +113,7 @@ namespace SistemaBorrador2._0.Repositorios
             cmd.Parameters.Add(new SqlParameter("@nombres", nombres));
             cmd.Parameters.Add(new SqlParameter("@apellidos", apellidos));
             cmd.Parameters.Add(new SqlParameter("@rolId", rolId));
+            cmd.Parameters.Add(new SqlParameter("@paisId", paisId));
             sql.Open();
             cmd.ExecuteNonQuery();
         }
